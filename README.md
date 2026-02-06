@@ -9,15 +9,51 @@ To write a program to predict the price of the house and number of occupants in 
 
 ## Algorithm
 
-1.Load California housing data, select three features as X and two target variables as Y, then split into train and test sets.
 
-2.Standardize X and Y using StandardScaler for consistent scaling across features.
+1.Load California Housing dataset and convert it into DataFrame.
 
-3.Initialize SGDRegressor and wrap it with MultiOutputRegressor to handle multiple targets.
+2.Select independent variables X and dependent variables Y (AveOccup, HousingPrice).
 
-4.Train the model on the standardized training data.
+3.Split dataset into training and testing sets.
 
-5.Predict on the test data, inverse-transform predictions, compute mean squared error, and print results.
+4.Standardize X and Y values using Standard Scaler using formula:
+
+
+  Z = (X − Mean) / Standard Deviation
+
+5.Initialize SGD Regression model parameters.
+
+6.Predict output using linear model formula:
+               
+  Ypred = XW + b
+
+7.Calculate error using:
+    
+  Error = Ypred − Y
+
+8.Update weights using SGD update rule:
+   
+   
+   W = W − learning_rate * (Error * X)
+
+9.Repeat prediction and weight update until maximum iterations reached.
+
+10.Predict outputs for test data using trained model:
+
+
+  Ypred = Xtest * W + b
+
+11.Convert predicted scaled values back to original values using inverse scaling:
+
+
+  X = (Z * Standard Deviation) + Mean
+
+12.Calculate Mean Squared Error (MSE) using formula:
+
+
+  MSE = (1/n) * Σ (Yactual − Ypred)²
+
+13.Display predicted output values.
 
 ## Program:
 ```
